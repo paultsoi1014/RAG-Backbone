@@ -1,0 +1,26 @@
+{
+    "step_back_prompting": [
+        {
+            "input": "Could the members of The Police perform lawful arrests?",
+            "output": "what can the members of The Police do?"
+        },
+        {
+            "input": "Jan Sindel’s was born in what country?",
+            "output": "what is Jan Sindel’s personal history?"
+        }
+    ],
+    "keyword_extraction": [
+        {
+            "input": "What is the primary function of cellular respiration in cells?",
+            "output": "cell, respiration, cellular respiration"
+        },
+        {
+            "input": "What is the difference between an acid and a base?",
+            "output": "acid, base, chemical properties"
+        },
+        {
+            "input": "What is supply and demand?",
+            "output": "supply, demand, economics"
+        }
+    ]
+}
