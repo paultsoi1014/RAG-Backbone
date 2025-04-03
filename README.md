@@ -46,7 +46,7 @@ docker compose up -d --build
 ## Installation
 ### 1. Clone the repository:
 ```bash
-git clone https://git.capax-tech.com/paul_tsoi/rag_backbone.git
+git clone https://github.com/paultsoi1014/RAG-Backbone.git
 ```
 ### 2. Navigate to the project directory:
 ```bash
