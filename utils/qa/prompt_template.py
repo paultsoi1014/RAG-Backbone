@@ -6,35 +6,16 @@ from langchain_core.prompts import (
 
 
 class PromptTemplate:
-    @staticmethod
-    def define_persona(target_subject: str) -> str:
+    def formulate(self) -> ChatPromptTemplate:
         """
-        Defines a persona prompt for the language model to act as a teacher of the
-        specified subject, creating examination questions and answers
-
-        Parameters
-        ----------
-        target_subject: str
-            The subject for which the persona will act as a teacher (e.g.,
-            'Mathematics', 'Biology')
+        Creates a chat prompt template consisting of system and human messages
 
         Returns
         -------
-        str
-            A prompt instructing the language model to act as a teacher of the
-            specified subject, with a focus on constructing exam questions and
-            answers
+        ChatPromptTemplate
+            A template defining structured interactions between the AI system
+            and the user
         """
-        persona_prompt = (
-            f"I want you to act as a {target_subject} teacher. I will provide "
-            f"some topics related to the study of {target_subject}, and it will "
-            "be your job to construct examination question and answer for students "
-            "to learn and test their capability."
-        )
-
-        return persona_prompt
-
-    def formulate(self) -> ChatPromptTemplate:
         # Define system message
         system_message = SystemMessagePromptTemplate.from_template(
             self._system_message_template()
@@ -92,12 +73,18 @@ class GeneralResponseTemplate(PromptTemplate):
 
 
 class GeneralStructureResponseTemplate(PromptTemplate):
+    """
+    A class to generate structure prompt templates for AI-based assistance. The
+    template define the structure of messages exchanged between the system and
+    the user
+    """
+
     @staticmethod
     def _system_message_template() -> str:
         """
         A static method that returns the system message template used to guide
-        the AI assistant's behavior in responding to user queries based on provided
-        context
+        the AI assistant's behavior in responding to user queries based on
+        provided context
         """
         system_message = (
             "You are a help AI assistant, please answer the query based on the "
