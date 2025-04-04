@@ -85,6 +85,8 @@ sh setup.sh
 
 ### 3. Run Document Ingestion
 ```python
+from agent.core import RAGAgent
+
 rag_agnet = RAGAgent()
 
 # Define the folder path, collection name, and chunking mode
@@ -102,6 +104,8 @@ rag_agnet.file_ingestion(
 
 ### 4. Run Question-Answering Based On Ingested Documents
 ```python
+from agent.core import RAGAgent
+
 rag_agnet = RAGAgent()
 
 # Define your query and the collections to retrieve from
