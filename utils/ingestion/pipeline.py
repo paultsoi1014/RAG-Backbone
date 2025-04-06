@@ -1,6 +1,8 @@
 from typing import Union, Optional
 
 from langchain_anthropic import ChatAnthropic
+from langchain_deepseek import ChatDeepSeek
+from langchain_groq import ChatGroq
 from langchain_openai import ChatOpenAI
 
 from llama_index.core import StorageContext
@@ -28,7 +30,7 @@ class RAGIngestionPipeline:
 
     def __init__(
         self,
-        lc_client: Union[ChatAnthropic, ChatOpenAI],
+        lc_client: Union[ChatAnthropic, ChatDeepSeek, ChatGroq, ChatOpenAI],
         li_embed_model: Union[
             FastEmbedEmbedding, HuggingFaceEmbedding, OllamaEmbedding, OpenAIEmbedding
         ],
@@ -42,7 +44,7 @@ class RAGIngestionPipeline:
 
         Attributes
         ----------
-        lc_client: Union[ChatAnthropic, ChatOpenAI]
+        lc_client: Union[ChatAnthropic, ChatDeepSeek, ChatGroq, ChatOpenAI]
             The LangChain language model client
         li_embed_model: Union[FastEmbedEmbedding, HuggingFaceEmbedding,
                         OllamaEmbedding, OpenAIEmbedding]

@@ -2,6 +2,8 @@ import asyncio
 from typing import Optional, List, Tuple, Union
 
 from langchain_anthropic import ChatAnthropic
+from langchain_deepseek import ChatDeepSeek
+from langchain_groq import ChatGroq
 from langchain_openai import ChatOpenAI
 
 from llama_index.core import VectorStoreIndex
@@ -17,7 +19,7 @@ class FusionRetriever:
 
     def __init__(
         self,
-        lc_client: Union[ChatAnthropic, ChatOpenAI],
+        lc_client: Union[ChatAnthropic, ChatDeepSeek, ChatGroq, ChatOpenAI],
         lf_handler: CallbackHandler,
         retrievers: List[VectorStoreIndex],
         top_n: Optional[int] = 2,
@@ -41,7 +43,7 @@ class FusionRetriever:
 
         Parameters
         ----------
-        lc_client: Union[ChatAnthropic, ChatOpenAI]
+        lc_client: Union[ChatAnthropic, ChatDeepSeek, ChatGroq, ChatOpenAI]
             The langchain language model client used for query rewriting
         lf_handler : langfuse.callback.CallbackHandler
             Handler for logging and tracing LLM interactions via Langfuse

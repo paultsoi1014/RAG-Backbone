@@ -22,7 +22,7 @@ class RAGAgentIngest(RAGAgentBase):
         qdrant_db: Union[QdrantVectorDB]
             An instance of the vector database for storing and retrieving
             document collections
-        langchain_client: Union[ChatAnthropic, ChatOpenAI]
+        langchain_client: Union[ChatAnthropic, ChatDeepSeek, ChatGroq, ChatOpenAI]
             A client instance for interacting with the language model, inherited
             from `RAGAgentBase`
         llamaindex_embed_model: Union[FastEmbedEmbedding, HuggingFaceEmbedding

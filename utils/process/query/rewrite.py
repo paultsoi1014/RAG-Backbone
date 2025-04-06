@@ -3,6 +3,8 @@ from typing import Optional, List, Union
 
 from langchain_core.runnables import RunnableSequence
 from langchain_anthropic import ChatAnthropic
+from langchain_deepseek import ChatDeepSeek
+from langchain_groq import ChatGroq
 from langchain_openai import ChatOpenAI
 
 from langfuse.callback import CallbackHandler
@@ -22,7 +24,9 @@ class QueryRewrite:
     ]
 
     def __init__(
-        self, lc_client: Union[ChatAnthropic, ChatOpenAI], lf_handler: CallbackHandler
+        self,
+        lc_client: Union[ChatAnthropic, ChatDeepSeek, ChatGroq, ChatOpenAI],
+        lf_handler: CallbackHandler,
     ):
         """
         A class to rewrite the query from users through query expansion and
@@ -30,7 +34,7 @@ class QueryRewrite:
 
         Attributes
         ----------
-        lc_client: ChatOpenAI
+        lc_client: Union[ChatAnthropic, ChatDeepSeek, ChatGroq, ChatOpenAI]
             The langchain language model client used for generating queries
         lf_handler: langfuse.callback.CallbackHandler
             Handler for logging and tracing LLM interactions via Langfuse

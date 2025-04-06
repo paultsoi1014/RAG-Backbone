@@ -2,6 +2,8 @@ from typing import Union
 
 from langchain_core.runnables import RunnableSequence
 from langchain_anthropic import ChatAnthropic
+from langchain_deepseek import ChatDeepSeek
+from langchain_groq import ChatGroq
 from langchain_openai import ChatOpenAI
 
 from langfuse.callback import CallbackHandler
@@ -18,7 +20,7 @@ class ResponseGenerator:
 
     def __init__(
         self,
-        lc_client: Union[ChatAnthropic, ChatOpenAI],
+        lc_client: Union[ChatAnthropic, ChatDeepSeek, ChatGroq, ChatOpenAI],
         lf_handler: CallbackHandler,
         chat_mode: bool,
     ):
@@ -28,7 +30,7 @@ class ResponseGenerator:
 
         Attributes
         ----------
-        lc_client: Union[ChatAnthropic, ChatOpenAI]
+        lc_client: Union[ChatAnthropic, ChatDeepSeek, ChatGroq, ChatOpenAI]
             The LangChain client that will be used to interact with LLM for
             generating response
         lf_handler: langfuse.callback.CallbackHandler

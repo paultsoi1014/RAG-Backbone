@@ -20,6 +20,8 @@ from config import (
 from typing import Optional, Union
 
 from langchain_anthropic import ChatAnthropic
+from langchain_deepseek import ChatDeepSeek
+from langchain_groq import ChatGroq
 from langchain_openai import ChatOpenAI
 
 from llama_index.core import Settings
@@ -48,18 +50,18 @@ class RAGAgentBase:
 
         Attributes
         ----------
-        langchain_client : Union[ChatAnthropic, ChatOpenAI]
+        langchain_client: Union[ChatAnthropic, ChatDeepSeek, ChatGroq, ChatOpenAI]
             An instance of the LangChain client for generating responses
-        llamaindex_embed_model : Union[FastEmbedEmbedding, HuggingFaceEmbedding,
+        llamaindex_embed_model: Union[FastEmbedEmbedding, HuggingFaceEmbedding,
                                  OllamaEmbedding, OpenAIEmbedding]
             An embedding model for indexing documents
-        vector_db : Union[QdrantVectorDB]
+        vector_db: Union[QdrantVectorDB]
             The vector database used for storing and retrieving vectorized
             documents
-        similarity_top_k : int
+        similarity_top_k: int
             The number of top relevant documents to retrieve through dense
             retrieval
-        sparse_top_k : int
+        sparse_top_k: int
             The number of top relevant documents to retrieve through sparse
             retrieval
         """
@@ -142,7 +144,7 @@ class RAGAgentBase:
         api_key: str,
         api_base: Optional[str] = None,
         temperature: Optional[float] = 0,
-    ) -> Union[ChatAnthropic, ChatOpenAI]:
+    ) -> Union[ChatAnthropic, ChatDeepSeek, ChatGroq, ChatOpenAI]:
         """
         Initializes and returns the appropriate LLM client based on the provider
 
@@ -161,7 +163,7 @@ class RAGAgentBase:
 
         Returns
         -------
-        Union[ChatAnthropic, ChatOpenAI]
+        Union[ChatAnthropic, ChatDeepSeek, ChatGroq, ChatOpenAI]
             The initialized LLM client corresponding to the configured provider
         """
         clients = {
@@ -174,6 +176,16 @@ class RAGAgentBase:
                 openai_api_base=api_base,
                 openai_api_key=api_key,
                 model=model,
+                temperature=temperature,
+            ),
+            "deepseek": ChatDeepSeek(
+                api_key=api_key,
+                model=model,
+                temperature=temperature,
+            ),
+            "groq": ChatGroq(
+                groq_api_key=api_key,
+                model_name=model,
                 temperature=temperature,
             ),
             "openai": ChatOpenAI(

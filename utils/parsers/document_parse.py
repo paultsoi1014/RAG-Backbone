@@ -7,6 +7,8 @@ from config import PARSER_URL
 from typing import Tuple, Union
 
 from langchain_anthropic import ChatAnthropic
+from langchain_deepseek import ChatDeepSeek
+from langchain_groq import ChatGroq
 from langchain_openai import ChatOpenAI
 
 from langfuse.callback import CallbackHandler
@@ -18,7 +20,9 @@ class DocumentParser:
     __slots__ = ["lf_handler", "parser_mapper", "refinement_chain", "parser_url"]
 
     def __init__(
-        self, lc_client: Union[ChatAnthropic, ChatOpenAI], lf_handler: CallbackHandler
+        self,
+        lc_client: Union[ChatAnthropic, ChatDeepSeek, ChatGroq, ChatOpenAI],
+        lf_handler: CallbackHandler,
     ):
         """
         A class to parse and process documents of various file types (txt, pdf)
@@ -35,7 +39,7 @@ class DocumentParser:
 
         Parameters
         ----------
-        lc_client: Union[ChatAnthropic, ChatOpenAI]
+        lc_client: Union[ChatAnthropic, ChatDeepSeek, ChatGroq, ChatOpenAI]
             A langchain client instance for interacting with the language model
         """
         # langfuse handler
