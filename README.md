@@ -115,7 +115,7 @@ collections = ["collection_1", "collection_2"]  # List of collections to search 
 # Generate a response using the RAGAgent
 response = rag_agnet.generate_response(
     query=query,
-    collections=collection,
+    collections=collections,
     query_rewrite=True, # Enable automatic query rewriting
     chat_mode=False, # Set to True for conversational mode, False for structure output
 )
