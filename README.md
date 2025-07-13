@@ -34,6 +34,7 @@ git clone https://github.com/langfuse/langfuse.git
 cd langfuse
 docker compose up -d
 ```
+Continue the setup through creating a project, followed by creating a public and secret key in project settings
 
 ### 2. Document Parser
 The document parser processes documents for ingestion into the RAG system and is hosted in a separate repository. Follow these steps to set it up:
