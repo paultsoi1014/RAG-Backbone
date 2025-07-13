@@ -1,7 +1,4 @@
-import sys
 import uuid
-
-sys.path.append(".")
 
 from langfuse.callback import CallbackHandler
 

@@ -1,7 +1,3 @@
-import sys
-
-sys.path.append(".")
-
 from config import (
     VECTOR_DB_PROVIDER,
     VECTOR_DB_URL,
