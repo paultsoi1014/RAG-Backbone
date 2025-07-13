@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO)
 logging.info(f"ENVIRONMENT: {os.getenv('ENVIRONMENT', 'development')}")
 
 # Load environment variables from .env file
-if os.getenv("ENVIRONMENT", "development") == "development":
+if os.getenv("ENVIRONMENT", "development") != "development":
     load_dotenv(override=True)
 
 # Qdrant Vector DB Configuration
