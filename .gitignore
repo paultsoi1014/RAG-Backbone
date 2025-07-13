@@ -3,3 +3,4 @@ __pycache__
 .env
 qdrant_storage
 playground
+.venv
