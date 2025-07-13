@@ -56,13 +56,8 @@ cd rag_backbone
 ### 3. Create and activate a virtual environment:
 #### Option 1: Using `venv` (Python Standard Library)
 ```bash
-python -m venv venv
-source venv/bin/activate
-```
-#### Option 2: Using `conda` (Python 3.11)
-```bash
-conda create --name myenv python=3.11
-conda activate myenv
+uv venv
+source .venv/bin/activate
 ```
 
 ### 4. Install dependencies:
