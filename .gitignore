@@ -1,0 +1,9 @@
+.DS_store
+playground/
+__pycache__
+.pyc
+docker-compose-internal.yml
+qdrant_storage/
+.env
+docker-compose-dev.yml
+.vscode
